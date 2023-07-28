@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ldjlr8fpt1s6"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_36yp3"]
+[ext_resource type="Texture2D" uid="uid://dysfu6kwkw2ch" path="res://background.jpg" id="1_tfa5h"]
+[ext_resource type="PackedScene" uid="uid://c6y0ul486aani" path="res://player.tscn" id="2_3t4kd"]
+[ext_resource type="AudioStream" uid="uid://b1x2m2dmshkry" path="res://audio/Mortal-Kombat-Theme-Song_M4A_128K_.ogg" id="4_a0nwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3dyb"]
+size = Vector2(1913.22, 164.5)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_36yp3")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(958, 541)
+scale = Vector2(4.15119, 4.23077)
+texture = ExtResource("1_tfa5h")
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_3t4kd")]
+position = Vector2(253, 782)
+
+[node name="chao" type="StaticBody2D" parent="."]
+
+[node name="collisionChao" type="CollisionShape2D" parent="chao"]
+position = Vector2(958.563, 967)
+shape = SubResource("RectangleShape2D_j3dyb")
+debug_color = Color(0.952941, 0.054902, 0.52549, 0.419608)
+
+[node name="Song" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_a0nwk")

@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6y0ul486aani"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_o5pau"]
+[ext_resource type="Texture2D" uid="uid://dakmbl24blaot" path="res://assets/padrao_alef.png" id="2_h3lmi"]
+[ext_resource type="Texture2D" uid="uid://bpgdmnssnkows" path="res://assets/chute_alef.png" id="3_2kw23"]
+[ext_resource type="Texture2D" uid="uid://5s6lg4rghubf" path="res://assets/run_alef_1.png" id="4_hinkg"]
+[ext_resource type="Texture2D" uid="uid://4eiv06jlauja" path="res://assets/run_2_alef.png" id="5_027oj"]
+[ext_resource type="Texture2D" uid="uid://deoq6re02qyce" path="res://assets/cotovelada_alef.png" id="5_y2fqe"]
+[ext_resource type="Texture2D" uid="uid://ct4ybh208ie8u" path="res://assets/padrao_alef_tras.png" id="6_x1ler"]
+[ext_resource type="Texture2D" uid="uid://coe6cjwb3ea0u" path="res://assets/padrao_alef_frente.png" id="7_chpsr"]
+[ext_resource type="Texture2D" uid="uid://divuxaf0wfys4" path="res://assets/soco_alef.png" id="8_6ddou"]
+[ext_resource type="Texture2D" uid="uid://bho36jyemopvy" path="res://assets/voadora_1_alef.png" id="9_qv137"]
+[ext_resource type="Texture2D" uid="uid://c4mdy8lr1g8dl" path="res://assets/voadora_2_alef.png" id="10_7e0e1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itldr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3lmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2kw23")
+}],
+"loop": true,
+"name": &"chute",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6ddou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y2fqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2kw23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qv137")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7e0e1")
+}],
+"loop": true,
+"name": &"combo",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hinkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_027oj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hinkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_027oj")
+}],
+"loop": true,
+"name": &"corrida",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x1ler")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h3lmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_chpsr")
+}],
+"loop": true,
+"name": &"padrao",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3lmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6ddou")
+}],
+"loop": true,
+"name": &"soco",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3lmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qv137")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7e0e1")
+}],
+"loop": true,
+"name": &"voadora",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv5iy"]
+radius = 71.0
+height = 242.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(4, 7)
+script = ExtResource("1_o5pau")
+metadata/_edit_group_ = true
+
+[node name="AnimPlayer" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.23, 0.23)
+sprite_frames = SubResource("SpriteFrames_itldr")
+animation = &"combo"
+frame_progress = 0.0425384
+speed_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_uv5iy")
